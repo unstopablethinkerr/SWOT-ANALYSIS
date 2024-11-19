@@ -10,10 +10,54 @@ document.addEventListener("DOMContentLoaded", () => {
       Threats: []
     },
     options: {
-      Strengths: ["High quality", "Strong brand", "Expert team", "Large market share"],
-      Weaknesses: ["Limited resources", "Low brand recognition", "High costs", "Weak distribution"],
-      Opportunities: ["Emerging markets", "New technologies", "Market demand", "Partnerships"],
-      Threats: ["Competitors", "Economic downturn", "Regulations", "Changing trends"]
+      Strengths: [
+        "Innovative products",
+        "Skilled team",
+        "Strong leadership",
+        "Financial stability",
+        "Global reach",
+        "Customer loyalty",
+        "High-quality services",
+        "Technological advantage",
+        "Unique brand identity",
+        "Efficient operations"
+      ],
+      Weaknesses: [
+        "High production costs",
+        "Limited customer base",
+        "Dependence on few suppliers",
+        "Weak marketing strategies",
+        "Outdated technology",
+        "Limited innovation",
+        "Staff shortages",
+        "Poor brand recognition",
+        "Low operational efficiency",
+        "Weak financial health"
+      ],
+      Opportunities: [
+        "Growing market demand",
+        "Partnership opportunities",
+        "Emerging technologies",
+        "Market expansion",
+        "Increased digital presence",
+        "Government incentives",
+        "Untapped markets",
+        "Diversified products",
+        "New consumer trends",
+        "Economic growth"
+      ],
+      Threats: [
+        "Strong competition",
+        "Economic downturn",
+        "Changing regulations",
+        "Supply chain disruptions",
+        "Technological obsolescence",
+        "Customer preferences shift",
+        "Price wars",
+        "Political instability",
+        "Market saturation",
+        "Cybersecurity risks"
+      ]
     },
     scores: { Strengths: 0, Weaknesses: 0, Opportunities: 0, Threats: 0 }
   };
@@ -51,13 +95,26 @@ document.addEventListener("DOMContentLoaded", () => {
     swotOptionsContainer.innerHTML = options
       .map(
         (option, index) => `
-      <label>
-        <input type="checkbox" value="${option}" id="${section.toLowerCase()}-option-${index}">
+      <button class="option-btn" data-section="${section}" data-value="${option}">
         ${option}
-      </label>
+      </button>
     `
       )
       .join("");
+
+    // Attach click event to each button
+    document.querySelectorAll(".option-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const { section, value } = e.target.dataset;
+        if (app.swotData[section].includes(value)) {
+          app.swotData[section] = app.swotData[section].filter((item) => item !== value);
+          e.target.classList.remove("selected");
+        } else {
+          app.swotData[section].push(value);
+          e.target.classList.add("selected");
+        }
+      });
+    });
   };
 
   const calculateScores = () => {
@@ -98,14 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   nextSectionButton.addEventListener("click", () => {
-    // Save selected options
-    const currentSection = Object.keys(app.swotData)[app.currentSection];
-    const selectedOptions = Array.from(
-      swotOptionsContainer.querySelectorAll("input:checked")
-    ).map((checkbox) => checkbox.value);
-    app.swotData[currentSection] = selectedOptions;
-
-    // Move to next section
     app.currentSection++;
     if (app.currentSection < Object.keys(app.swotData).length) {
       renderCurrentSection();
@@ -117,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   shareButton.addEventListener("click", () => {
-    const url = window.location.href;
+    const url = "https://unstopablethinkerr.github.io/SWOT-ANALYSIS/";
     const score = getTotalScore();
     const text = `${app.name}'s SWOT Analysis Score: ${score}. Check it out here: ${url}`;
     if (navigator.share) {
