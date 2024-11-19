@@ -1,0 +1,164 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Themes */
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.colorful {
+  background: linear-gradient(to right, #ff7eb3, #ff758c, #ff9a44);
+  color: #ffffff;
+}
+
+/* Layout */
+#app {
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+h1, h2, h3 {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Multi-Select Section */
+.multi-select label {
+  display: block;
+  margin: 5px 0;
+}
+
+.multi-select input {
+  margin-right: 10px;
+}
+
+/* Theme Options */
+.theme-options {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.theme-btn {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-btn[data-theme="light"] {
+  background-color: #f8f9fa;
+  color: #000;
+}
+
+.theme-btn[data-theme="dark"] {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.theme-btn[data-theme="colorful"] {
+  background-color: #ff9a44;
+  color: #fff;
+}
+
+.theme-btn:hover {
+  opacity: 0.8;
+}
+
+/* Result Screen */
+#swot-score-display {
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+#share-button {
+  background-color: #28a745;
+}
+
+#share-button:hover {
+  background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #app {
+    width: 100%;
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .theme-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .theme-btn {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
