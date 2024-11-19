@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     scores: { Strengths: 0, Weaknesses: 0, Opportunities: 0, Threats: 0 }
   };
 
-  // Screens
   const screens = {
     welcome: document.getElementById("welcome-screen"),
     theme: document.getElementById("theme-screen"),
@@ -79,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const swotScoreDisplay = document.getElementById("swot-score-display");
   const shareButton = document.getElementById("share-button");
 
-  // Utility Functions
   const showScreen = (screen) => {
     Object.values(screens).forEach((el) => el.classList.add("hidden"));
     screen.classList.remove("hidden");
@@ -90,11 +88,18 @@ document.addEventListener("DOMContentLoaded", () => {
     app.theme = theme;
   };
 
+  const shuffleArray = (array) => {
+    return array
+      .map((item) => ({ item, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ item }) => item);
+  };
+
   const renderOptions = (section) => {
-    const options = app.options[section];
+    const options = shuffleArray(app.options[section]);
     swotOptionsContainer.innerHTML = options
       .map(
-        (option, index) => `
+        (option) => `
       <button class="option-btn" data-section="${section}" data-value="${option}">
         ${option}
       </button>
@@ -102,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
       )
       .join("");
 
-    // Attach click event to each button
     document.querySelectorAll(".option-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const { section, value } = e.target.dataset;
@@ -132,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   };
 
-  // Event Handlers
   document.getElementById("start-theme-selection").addEventListener("click", () => {
     app.name = nameInput.value.trim();
     if (app.name === "") {
@@ -176,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Render Functions
   const renderCurrentSection = () => {
     const sectionKeys = Object.keys(app.swotData);
     const currentSection = sectionKeys[app.currentSection];
