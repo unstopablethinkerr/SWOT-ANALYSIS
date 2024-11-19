@@ -156,11 +156,12 @@ button:hover {
   color: #333;
 }
 
-/* Button Styling */
+
 .option-btn {
   background: linear-gradient(135deg, #ffffff, #e3f2fd);
   color: #333;
   border: 1px solid #ccc;
+  transition: all 0.3s ease;
 }
 
 .option-btn:hover {
@@ -173,6 +174,8 @@ button:hover {
   color: #fff;
   border-color: #0056b3;
 }
+
+
 
 /* Result Screen */
 #swot-score-display {
