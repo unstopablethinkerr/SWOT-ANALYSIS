@@ -168,16 +168,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  shareButton.addEventListener("click", () => {
-    const url = "https://unstopablethinkerr.github.io/SWOT-ANALYSIS/";
-    const score = getTotalScore();
-    const text = `${app.name}'s SWOT Analysis Score: ${score}. Check it out here: ${url}`;
-    if (navigator.share) {
-      navigator.share({ title: "SWOT Analysis", text, url });
-    } else {
-      alert("Sharing is not supported on this browser.");
-    }
-  });
+shareButton.addEventListener("click", () => {
+  const url = "https://unstopablethinkerr.github.io/SWOT-ANALYSIS/";
+  const score = getTotalScore();
+  const text = `${app.name}'s SWOT Analysis Score: ${score}. 
+Get to know your score under 60 seconds! Check it out here: ${url}`;
+  
+  if (navigator.share) {
+    navigator.share({ title: "SWOT Analysis", text, url });
+  } else {
+    alert("Sharing is not supported on this browser.");
+  }
+});
+
 
   const renderCurrentSection = () => {
     const sectionKeys = Object.keys(app.swotData);
