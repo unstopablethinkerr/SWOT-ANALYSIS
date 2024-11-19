@@ -171,8 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 shareButton.addEventListener("click", () => {
   const url = "https://unstopablethinkerr.github.io/SWOT-ANALYSIS/";
   const score = getTotalScore();
-  const text = `${app.name}'s SWOT Analysis Score: ${score}. 
-Get to know your score under 60 seconds! Check it out here: ${url}`;
+  const text = `${app.name}\'s SWOT Analysis Score: ${score}. Get to know your score under 60 seconds! Check it out here: https://unstopablethinkerr.github.io/SWOT-ANALYSIS`;
   
   if (navigator.share) {
     navigator.share({ title: "SWOT Analysis", text, url });
