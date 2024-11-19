@@ -127,28 +127,51 @@ button:hover {
   opacity: 0.8;
 }
 
+
+/* Gradient Background for Text Container */
+#result-screen, #swot-section {
+  background: linear-gradient(135deg, #f8f9fa, #e0e7ff);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #333; /* Ensure readable text color */
+}
+
+/* General Text Styling for Result Screen */
+#result-screen h2, 
+#result-screen p {
+  color: #333; /* Dark color for readability */
+}
+
+/* Text Styling for Results */
+#swot-score-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #222; /* Ensure darker text for better visibility */
+}
+
+#user-name-display {
+  font-size: 1.2rem;
+  color: #333;
+}
+
 /* Button Styling */
 .option-btn {
-  display: inline-block;
-  padding: 10px 15px;
-  margin: 10px 5px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  background-color: #f0f0f0;
+  background: linear-gradient(135deg, #ffffff, #e3f2fd);
   color: #333;
-  transition: background-color 0.3s, color 0.3s;
+  border: 1px solid #ccc;
 }
 
 .option-btn:hover {
-  background-color: #007bff;
+  background: #007bff;
   color: #fff;
 }
 
 .option-btn.selected {
-  background-color: #007bff;
+  background: #007bff;
   color: #fff;
+  border-color: #0056b3;
 }
 
 /* Result Screen */
